@@ -1,0 +1,16 @@
+<% title "Header" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @header.name %>
+</p>
+<p>
+  <strong>Default Value:</strong>
+  <%= @header.default_value %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_header_path(@header) %> |
+  <%= link_to "Destroy", @header, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", headers_path %>
+</p>

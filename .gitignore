@@ -1,0 +1,16 @@
+*.tmproj
+.todo
+.DS_Store
+.bundle
+db/*.sqlite3
+log
+tmp
+config/database.yml
+public/images/runtime
+public/images/runtime/*/**
+REVISION
+public/system
+backup/*
+*.log
+public/uploads
+.sass-cache/*

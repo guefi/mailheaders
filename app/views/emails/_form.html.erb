@@ -1,0 +1,20 @@
+<%= semantic_form_for @email do |f| %>
+  <%= f.inputs do %>
+	  <%# f.input :headers, :as => :check_boxes %>
+
+    <%= f.semantic_fields_for :headerables do |headerable| %>
+			<%= headerable.inputs do %>
+		     <%= headerable.select :header_id, Header.all.collect {|h| [ h.name, h.id ] }, {:include_blank => true} %>
+		     <%= headerable.text_field :value %>
+		<br/>
+			<% end %>
+    <% end %>
+		<br/>
+
+	  <%= f.input :subject %>
+	  <%= f.input :body %>
+		
+	<% end %>
+  <%= f.actions :submit, :cancel %>
+<% end %>
+

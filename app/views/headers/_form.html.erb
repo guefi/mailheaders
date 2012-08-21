@@ -1,0 +1,12 @@
+<%= form_for @header do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :default_value %><br />
+    <%= f.text_field :default_value %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

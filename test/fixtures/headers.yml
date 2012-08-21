@@ -1,0 +1,7 @@
+one:
+  name: MyString
+  default_value: MyString
+
+two:
+  name: MyString
+  default_value: MyString

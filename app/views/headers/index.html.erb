@@ -1,0 +1,19 @@
+<% title "Headers" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Default Value</th>
+  </tr>
+  <% for header in @headers %>
+    <tr>
+      <td><%= header.name %></td>
+      <td><%= header.default_value %></td>
+      <td><%= link_to "Show", header %></td>
+      <td><%= link_to "Edit", edit_header_path(header) %></td>
+      <td><%= link_to "Destroy", header, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Header", new_header_path %></p>

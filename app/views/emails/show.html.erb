@@ -1,0 +1,32 @@
+<% title "Email" %>
+
+<fieldset>
+	<legend>Headers</legend>
+	<% @email.headerables.each do |headerable| %>
+	<p>
+	  <strong><%= headerable.header.name if headerable.header %>:</strong> <%= headerable.value %>
+	</p>
+		
+	<% end %>
+</fieldset>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @email.subject %>
+</p>
+<p>
+  <strong>Body:</strong>
+  <%= @email.body %>
+</p>
+
+<fieldset>
+	<legend>Email object</legend>
+	<%=  debug EmailMailer.send_email(@email) %>
+</fieldset>
+
+<p>
+	<%= link_to "Send", sendit_email_path(@email) %> | 
+  <%= link_to "Edit", edit_email_path(@email) %> |
+  <%= link_to "Destroy", @email, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", emails_path %>
+</p>
