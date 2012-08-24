@@ -1,11 +1,13 @@
 class EmailsController < ApplicationController
   def index
-    @emails = Email.all
+    @emails = Email.order("updated_at desc")
   end
 
   def show
     @email = Email.find(params[:id])
-    @email_letter = EmailMailer.send_email(@email)
+    @email_mailer = EmailMailer
+    @email_letter = @email_mailer.send_email(@email)
+    # @email_headers = @email_mailer.get_headers
     render :show
   end
   
@@ -21,6 +23,16 @@ class EmailsController < ApplicationController
     10.times do
       @email.headerables.build
     end
+
+    # init with rails 3.2 default headers
+    ["mime_version", "charset", "content_type", "from", "to", "subject"].each_with_index do |header, index|
+      this_header = @email.headerables[index]
+      global_header = Header.find_by_name(header)
+      this_header.header_id = global_header.id
+      this_header.value = global_header.default_value
+    end
+
+    @email_headers = EmailMailer.get_headers
   end
 
   def create
@@ -34,9 +46,10 @@ class EmailsController < ApplicationController
 
   def edit
     @email = Email.find(params[:id])
-    3.times do
+    5.times do
       @email.headerables.build
     end
+    @email_headers = EmailMailer.get_headers
   end
 
   def update

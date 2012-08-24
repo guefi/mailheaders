@@ -18,7 +18,8 @@ Mailheaders::Application.configure do
   
   # Change mail delvery to either :smtp, :sendmail, :file, :test
   # group = development => :letter_opener
-  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :sendmail
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

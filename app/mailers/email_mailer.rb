@@ -7,13 +7,26 @@ class EmailMailer < ActionMailer::Base
   #
   #   en.email_mailer.send_email.subject
   #
+  
+  def get_headers
+    @headers = headers
+    @headers
+  end
+  
+  def set_headers(options={})
+    @headers = options
+    headers = @headers
+  end
+  
+  def get_raw
+    @raw_source
+  end
+  
   def send_email(email)
     @greeting = "Hi"
     headers = {
-        :to => "guenter@inode.at",
         :subject => email.subject, 
-        :body => email.body,
-        :mime_version => '2.0'
+        :body => email.body
         }
     
     my_headers = {}
@@ -25,8 +38,12 @@ class EmailMailer < ActionMailer::Base
     # my_headers[:mime_version] = '1.0.1'
     
     headers(my_headers) if my_headers
+    
+    set_headers headers
 
     mail headers 
+    
+    @raw_source
 
   end
 end

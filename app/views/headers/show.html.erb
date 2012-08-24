@@ -1,6 +1,13 @@
 <% title "Header" %>
 
 <p>
+  <%= link_to "New", new_header_path %> |
+  <%= link_to "Edit", edit_header_path(@header) %> |
+  <%= link_to "Destroy", @header, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", headers_path %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @header.name %>
 </p>
@@ -10,6 +17,7 @@
 </p>
 
 <p>
+  <%= link_to "New", new_header_path %> |
   <%= link_to "Edit", edit_header_path(@header) %> |
   <%= link_to "Destroy", @header, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", headers_path %>
