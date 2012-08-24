@@ -25,7 +25,7 @@ class EmailsController < ApplicationController
     end
 
     # init with rails 3.2 default headers
-    ["mime_version", "charset", "content_type", "from", "to", "subject"].each_with_index do |header, index|
+    ["mime_version", "charset", "content_type", "from", "to"].each_with_index do |header, index|
       this_header = @email.headerables[index]
       global_header = Header.find_by_name(header)
       this_header.header_id = global_header.id
