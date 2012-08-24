@@ -28,6 +28,9 @@ group :development do
 	gem "letter_opener"
 end
 
+gem 'execjs'
+gem 'therubyracer'
+
 gem 'formtastic'
 
 # To use ActiveModel has_secure_password
@@ -45,4 +48,3 @@ gem 'formtastic'
 # To use debugger
 # gem 'debugger'
 
-gem "mocha", :group => :test
